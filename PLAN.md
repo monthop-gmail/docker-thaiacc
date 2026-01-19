@@ -172,9 +172,9 @@ git submodule update --init --recursive
 
 | Date | Phase | Status | Notes |
 |------|-------|--------|-------|
-| - | Phase 1 | Pending | Docker setup |
-| - | Phase 2 | Pending | OCA modules install |
-| - | Phase 3 | Pending | High priority custom |
+| 2026-01-19 | Phase 1 | ✅ Done | Docker setup + OCA submodules |
+| 2026-01-19 | Phase 2 | ✅ Done | OCA modules installed + demo data |
+| - | Phase 3 | Pending | High priority custom (sequence_be) |
 | - | Phase 4 | Pending | Medium priority custom |
 | - | Phase 5 | Pending | Low priority custom |
 | - | Phase 6 | Pending | Testing |
