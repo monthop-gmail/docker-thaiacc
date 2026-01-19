@@ -36,15 +36,22 @@
 
 ## Modules ต้องพัฒนาเอง (ThaiACC - ยังไม่มีใน OCA 18.0)
 
-### A. Sequence Extensions (6 modules)
-| Module | Description | Priority |
-|--------|-------------|----------|
-| `l10n_th_sequence_refactored` | Extensible sequence legends | High |
-| `l10n_th_sequence_be` | Buddhist Era year | High |
-| `l10n_th_sequence_preview` | Sequence preview | Medium |
-| `l10n_th_sequence_qoy` | Quarter of Year | Low |
-| `l10n_th_sequence_branch` | Branch-based sequence | Medium |
-| `l10n_th_sequence_range_end` | Range end date | Low |
+### A. Sequence Extensions
+**หมายเหตุ**: OCA `l10n_th_base_sequence` มีครบแล้ว:
+- ✅ Extensible `_interpolation_dict()` - refactored แล้ว
+- ✅ Buddhist Era (พ.ศ.) - `%(year_be)s`, `%(y_be)s`, `%(range_year_be)s`
+- ✅ Sequence preview - computed field
+- ✅ Quarter of Year - `%(qoy)s`
+- ✅ Range end date - `%(range_end_year)s`
+
+| Module | Description | Priority | Status |
+|--------|-------------|----------|--------|
+| ~~`l10n_th_sequence_refactored`~~ | Extensible sequence legends | - | ✅ OCA มีแล้ว |
+| ~~`l10n_th_sequence_be`~~ | Buddhist Era year | - | ✅ OCA มีแล้ว |
+| ~~`l10n_th_sequence_preview`~~ | Sequence preview | - | ✅ OCA มีแล้ว |
+| ~~`l10n_th_sequence_qoy`~~ | Quarter of Year | - | ✅ OCA มีแล้ว |
+| ~~`l10n_th_sequence_range_end`~~ | Range end date | - | ✅ OCA มีแล้ว |
+| `l10n_th_sequence_branch` | Branch-based sequence | Medium | ต้องพัฒนา |
 
 ### B. Expense Extensions (2 modules)
 | Module | Description | Priority |
@@ -79,20 +86,14 @@
 - [ ] ติดตั้ง `l10n_th_account_wht_cert_form`
 - [ ] ทดสอบ functional ทั้งหมด
 
-### Phase 3: Migrate Custom Modules (High Priority)
-- [ ] `l10n_th_sequence_refactored` - ปรับให้ compatible กับ 19.0
-- [ ] `l10n_th_sequence_be` - Buddhist Era
-- [ ] `l10n_th_sequence_branch` - Branch sequence
+### Phase 3: Migrate Custom Modules
+**หมายเหตุ**: Sequence modules ส่วนใหญ่ใช้ OCA ได้เลย ไม่ต้องพัฒนาเอง
 
-### Phase 4: Migrate Custom Modules (Medium Priority)
-- [ ] `l10n_th_sequence_preview`
+- [x] Sequence modules - **ใช้ OCA `l10n_th_base_sequence` แทน**
+- [ ] `l10n_th_sequence_branch` - Branch-based sequence (ยังต้องพัฒนา)
 - [ ] `l10n_th_expense_tax_invoice`
 - [ ] `l10n_th_expense_withholding_tax`
 - [ ] `l10n_th_promptpay`
-
-### Phase 5: Migrate Custom Modules (Low Priority)
-- [ ] `l10n_th_sequence_qoy`
-- [ ] `l10n_th_sequence_range_end`
 - [ ] `l10n_th_company_novat`
 
 ### Phase 6: Testing & Documentation
@@ -115,11 +116,11 @@ docker-thaiacc/
 │   ├── partner-contact/     # สำหรับ partner_company_type, partner_firstname
 │   └── server-ux/           # สำหรับ tier_validation (ถ้าต้องการ)
 ├── custom-addons/           # Custom modules ที่ต้องพัฒนาเอง
-│   ├── l10n_th_sequence_refactored/
-│   ├── l10n_th_sequence_be/
-│   ├── l10n_th_sequence_branch/
-│   ├── l10n_th_promptpay/
-│   └── ...
+│   ├── l10n_th_sequence_branch/     # (TODO)
+│   ├── l10n_th_expense_tax_invoice/ # (TODO)
+│   ├── l10n_th_expense_withholding_tax/ # (TODO)
+│   ├── l10n_th_promptpay/           # (TODO)
+│   └── l10n_th_company_novat/       # (TODO)
 ├── ThaiACC/                 # (Archive) Original modules for reference
 └── PLAN.md
 ```
@@ -174,9 +175,7 @@ git submodule update --init --recursive
 |------|-------|--------|-------|
 | 2026-01-19 | Phase 1 | ✅ Done | Docker setup + OCA submodules |
 | 2026-01-19 | Phase 2 | ✅ Done | OCA modules installed + demo data |
-| - | Phase 3 | Pending | High priority custom (sequence_be) |
-| - | Phase 4 | Pending | Medium priority custom |
-| - | Phase 5 | Pending | Low priority custom |
+| 2026-01-19 | Phase 3 | 🔄 In Progress | Sequence ใช้ OCA ได้, ยังเหลือ branch/expense/promptpay |
 | - | Phase 6 | Pending | Testing |
 
 ---
