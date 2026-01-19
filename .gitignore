@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Odoo
+*.pyc
+.idea/
+*.log
+filestore/
+
+# Docker
+.docker/
+
+# Environment
+.env
+*.local
+
+# IDE
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data volumes
+data/
+postgres-data/
+
+# Odoo sessions/filestore
+sessions/
