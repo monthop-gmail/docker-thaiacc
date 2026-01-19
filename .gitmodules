@@ -1,0 +1,12 @@
+[submodule "oca-addons/l10n-thailand"]
+	path = oca-addons/l10n-thailand
+	url = https://github.com/OCA/l10n-thailand.git
+	branch = 18.0
+[submodule "oca-addons/partner-contact"]
+	path = oca-addons/partner-contact
+	url = https://github.com/OCA/partner-contact.git
+	branch = 18.0
+[submodule "oca-addons/server-ux"]
+	path = oca-addons/server-ux
+	url = https://github.com/OCA/server-ux.git
+	branch = 18.0

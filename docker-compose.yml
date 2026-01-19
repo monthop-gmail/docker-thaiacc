@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  odoo:
+    image: odoo:18.0
+    container_name: odoo-thaiacc
+    depends_on:
+      - db
+    ports:
+      - "${ODOO_PORT:-8069}:8069"
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      # OCA modules (git submodules)
+      - ./oca-addons/l10n-thailand:/mnt/extra-addons/l10n-thailand:ro
+      - ./oca-addons/partner-contact:/mnt/extra-addons/partner-contact:ro
+      - ./oca-addons/server-ux:/mnt/extra-addons/server-ux:ro
+      # Custom modules
+      - ./custom-addons:/mnt/extra-addons/custom-addons:ro
+    environment:
+      - HOST=db
+      - USER=${POSTGRES_USER:-odoo}
+      - PASSWORD=${POSTGRES_PASSWORD:-odoo}
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: postgres-thaiacc
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-postgres}
+      - POSTGRES_USER=${POSTGRES_USER:-odoo}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-odoo}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/pgdata
+    restart: unless-stopped
+
+volumes:
+  odoo-data:
+  postgres-data:
