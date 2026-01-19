@@ -10,3 +10,7 @@
 	path = oca-addons/server-ux
 	url = https://github.com/OCA/server-ux.git
 	branch = 18.0
+[submodule "oca-addons/reporting-engine"]
+	path = oca-addons/reporting-engine
+	url = https://github.com/OCA/reporting-engine.git
+	branch = 18.0
